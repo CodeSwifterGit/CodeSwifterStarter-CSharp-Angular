@@ -1,0 +1,34 @@
+@import "../../../../assets/styles/themes.scss";
+
+@include selectedTheme() {
+  .mat-snack-bar-container {
+    display: flex !important;
+    flex-direction: row !important;
+
+    &.alert {
+      background: map-get($mat-warn, A700);
+      color: map-get(map-get($mat-warn, contrast), A700);
+
+      .snackbar-action {
+        margin-left: 20px;
+
+        a,
+        a:visited {
+          color: map-get($mat-accent, 700) !important;
+        }
+        a:focus,
+        a:hover {
+          color: map-get($mat-accent, 400) !important;
+        }
+      }
+    }
+    &.normal {
+      background: map-get($background, dialog);
+      color: map-get($foreground, secondary-text);
+    }
+  }
+
+  editor-toast-message {
+    flex-grow: 1;
+  }
+}

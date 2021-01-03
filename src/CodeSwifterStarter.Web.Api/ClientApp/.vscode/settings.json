@@ -1,0 +1,5 @@
+{
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifier": "non-relative"
+}

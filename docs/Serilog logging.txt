@@ -1,0 +1,18 @@
+Running SEQ in local environment
+--------------------------------
+Start server using:
+docker run --rm -it -e ACCEPT_EULA=Y -p 5341:80 datalust/seq
+
+Inspect logs using:
+http://localhost:5341/
+
+Install SEQ in Production (or UAT, and DEV) environment
+-------------------------------------------------------
+https://datalust.co/download
+
+Configuring Serilog
+https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/
+
+Alternative is Elastic Search + Kibana
+However, it is search oriented, no alert oriented
+https://www.humankode.com/asp-net-core/logging-with-elasticsearch-kibana-asp-net-core-and-docker

@@ -1,0 +1,8 @@
+@import "../../../../assets/styles/themes.scss";
+
+@include selectedTheme() {
+  pre {
+      display: block;
+      white-space: pre;
+    }
+}

@@ -1,0 +1,9 @@
+<div style="min-width: 300px;">
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <pre mat-dialog-content class="content">{{data.body}}</pre>
+
+  <div mat-dialog-actions>
+    <button mat-button color="accent" [mat-dialog-close]="false" *ngIf="data.twoButtons">{{data.cancelButton}}</button>
+    <button id="confirm" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>{{data.confirmButton}}</button>
+  </div>
+</div>

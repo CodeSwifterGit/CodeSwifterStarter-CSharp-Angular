@@ -1,0 +1,39 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6001",
+      "sslPort": 6000
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Local"
+      }
+    },
+    "Project": {
+      "commandName": "Project",
+      "commandLineArgs": "watch --urls \"http://localhost:6001;https://localhost:6000\"",
+      "launchUrl": "http://localhost:4200",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Local",
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      },
+      "applicationUrl": "https://localhost:6000"
+    },
+    "Production": {
+      "commandName": "Project",
+      "commandLineArgs": "watch --urls \"https://codeswifterstarter.com;http://codeswifterstarter.com\"",
+      "launchBrowser": true,
+      "launchUrl": "https://codeswifterstarter.com",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Production"
+      },
+      "applicationUrl": "https://codeswifterstarter.com"
+    }
+  }
+}

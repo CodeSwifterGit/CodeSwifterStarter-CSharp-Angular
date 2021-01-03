@@ -1,0 +1,14 @@
+{
+  "authConfig":{
+    "dev": {
+      "clientId": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "domain": "codeswifterstarter-dev.eu.auth0.com",
+      "audience": "https://api-dev.codeswifterstarter.com"
+    },
+    "prod": {
+      "clientId": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "domain": "codeswifterstarter.eu.auth0.com",
+      "audience": "https://api.codeswifterstarter.com"
+    }
+  }
+}

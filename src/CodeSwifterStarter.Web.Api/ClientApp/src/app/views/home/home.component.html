@@ -1,0 +1,28 @@
+<div class="column-layout_1 column">
+	<h1 class="title">Welcome to CodeSwifterStarter App</h1>
+	<p class="text">Here you can test a few services which are the part of the boilerplatte project. Please inspect app component source code to see how they are invoked.</p>
+	<div class="column-layout_2 column">
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="showToastMessage()">
+			Show Toast message
+		</button>
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="showToastAlert()">
+			show toast alert
+		</button>
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="showConfirmationDialog()">
+			Show confirmation dialog
+		</button>
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="showMessage()">
+			show message
+		</button>
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="toogleTheme()">
+			toggle dark/light theme
+		</button>
+		<button mat-raised-button [disabled]="false" color="primary" class="raised-button" (click)="signInToggle()">
+			Sign in/out using auth0
+		</button>
+		<div class="text">
+			{{ signInInformation.stream$ | async }}
+		</div>
+	</div>
+	<p class="text">For more tutorials please visit <a href="https://youtube.com/codeswifter">CodeSwifter YouTube Channel</a></p>
+</div>

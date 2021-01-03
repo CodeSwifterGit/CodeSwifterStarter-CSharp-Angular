@@ -1,0 +1,4 @@
+<div style="height: 100%; width: 100%;" 
+[ngClass]="{ 'dark-theme': (currentTheme.stream$ | async) === 'Dark', 'light-theme': (currentTheme.stream$ | async) === 'Light' }">
+    <router-outlet></router-outlet>
+</div>

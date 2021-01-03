@@ -1,0 +1,62 @@
+@import "../../../assets/styles/themes.scss";
+
+@include selectedTheme() {
+    :host {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: map-get($background, app-bar) !important;
+        height: 100%;
+
+        .raised-button {
+            text-transform: uppercase;
+        }
+
+        .column-layout_1 {
+            align-items: center;
+            width: 90%;
+            position: relative;
+            min-width: 50px;
+            min-height: 50px;
+            flex: 1 1 auto;
+        }
+        .column-layout_2 {
+            align-items: stretch;
+            height: 350px;
+            justify-content: space-around;
+            margin: 30px;
+            padding: 10px;
+            position: relative;
+            min-width: 50px;
+            min-height: 50px;
+        }
+        .title {
+            margin: 20px;
+            height: max-content;
+            min-width: min-content;
+            flex: 0 0 auto;
+            text-align: Center;
+            color: map-get($foreground, secondary-text);
+            font-family: $font-family-base;
+        }
+        .text {
+            margin: 30px 0 0;
+            height: max-content;
+            min-width: min-content;
+            flex: 0 0 auto;
+            text-align: Center;
+            color: map-get($foreground, text);
+            font-family: $font-family-base;
+            line-height: 1.5em;
+        }
+        .button {
+            height: max-content;
+            min-width: min-content;
+            flex: 0 0 auto;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+        }        
+    }
+}

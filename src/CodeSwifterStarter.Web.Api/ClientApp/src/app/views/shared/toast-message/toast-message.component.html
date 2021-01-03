@@ -1,0 +1,7 @@
+<div fxLayoutAlign="center center" fxFlex="100">
+    {{data.message}}
+</div>
+<div fxLayoutAlign="end center" fxFlex="auto" *ngIf="!!data.actionName" class="snackbar-action">
+    <a href="#" (click)="onAction()">{{data.actionName}}</a>
+</div>
+  

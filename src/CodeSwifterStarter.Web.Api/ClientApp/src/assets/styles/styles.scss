@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@import 'themes';
+
+.dark-theme {
+    @include angular-material-theme($codeswifterstarter-dark-theme);
+}
+
+.light-theme {
+    @include angular-material-theme($codeswifterstarter-light-theme);
+}
+
+@include mat-core();

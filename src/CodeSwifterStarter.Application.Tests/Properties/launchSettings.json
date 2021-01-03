@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CodeSwifterStarter.Application.Tests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Local",
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      }
+    }
+  }
+}
