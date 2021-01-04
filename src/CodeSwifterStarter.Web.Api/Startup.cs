@@ -177,14 +177,14 @@ namespace CodeSwifterStarter.Web.Api
                         {
                             foreach (var permission in securityPolicy.Permissions)
                             {
-                                policy.Requirements.Add(new HasScopeRequirement(permission.Name, authDomain));
+                                policy.Requirements.Add(new PermissionRequirement(permission.Name, authDomain));
                             }
                         });
                 }
             });
 
             // register the scope authorization handler
-            services.AddScoped<IAuthorizationHandler, HasScopeHandler>();
+            services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
             // Consider making this publicly available
             if (Environment.IsDevelopment())

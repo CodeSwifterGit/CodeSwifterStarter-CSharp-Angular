@@ -4,53 +4,41 @@ $font-family-base: Roboto, "Helvetica Neue", sans-serif !default;
 
 // Dark theme
 $codeswifterstarter-dark-primary: mat-palette($mat-blue, 500, 100, 900);
-$codeswifterstarter-dark-accent:  mat-palette($mat-pink, A200, A100, A400);
-$codeswifterstarter-dark-warn:    mat-palette($mat-red);
+$codeswifterstarter-dark-accent: mat-palette($mat-pink, A200, A100, A400);
+$codeswifterstarter-dark-warn: mat-palette($mat-red);
 
-$codeswifterstarter-dark-theme: mat-dark-theme((
-  color: (
-    primary: $codeswifterstarter-dark-primary,
-    accent: $codeswifterstarter-dark-accent,
-    warn: $codeswifterstarter-dark-warn,  
-  )
-));
+$codeswifterstarter-dark-theme: mat-dark-theme(( color: ( primary: $codeswifterstarter-dark-primary, accent: $codeswifterstarter-dark-accent, warn: $codeswifterstarter-dark-warn, ) ));
 
 // Light theme
 $codeswifterstarter-light-primary: mat-palette($mat-blue);
-$codeswifterstarter-light-accent:  mat-palette($mat-pink, A200, A100, A400);
-$codeswifterstarter-light-warn:    mat-palette($mat-red);
+$codeswifterstarter-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$codeswifterstarter-light-warn: mat-palette($mat-red);
 
-$codeswifterstarter-light-theme: mat-light-theme((
-  color: (
-    primary: $codeswifterstarter-light-primary,
-    accent: $codeswifterstarter-light-accent,
-    warn: $codeswifterstarter-light-warn,  
-  )
-));
+$codeswifterstarter-light-theme: mat-light-theme(( color: ( primary: $codeswifterstarter-light-primary, accent: $codeswifterstarter-light-accent, warn: $codeswifterstarter-light-warn, ) ));
 
 // Default (if no theme name codeswifterstarter-dark-theme or codeswifterstarter-light-theme is included in class element on html element)
 $mat-primary: map-get($codeswifterstarter-dark-theme, primary);
 $mat-accent: map-get($codeswifterstarter-dark-theme, accent);
 $mat-warn: map-get($codeswifterstarter-dark-theme, warn);
-$background: map-get($codeswifterstarter-dark-theme, background) !global;
-$foreground: map-get($codeswifterstarter-dark-theme, foreground) !global;
+$background: map-get($codeswifterstarter-dark-theme, background);
+$foreground: map-get($codeswifterstarter-dark-theme, foreground);
 
-@mixin selectedTheme(){
-  .dark-theme{
+@mixin selectedTheme() {
+  .dark-theme {
     $mat-primary: map-get($codeswifterstarter-dark-theme, primary);
     $mat-accent: map-get($codeswifterstarter-dark-theme, accent);
     $mat-warn: map-get($codeswifterstarter-dark-theme, warn);
     $background: map-get($codeswifterstarter-dark-theme, background) !global;
     $foreground: map-get($codeswifterstarter-dark-theme, foreground) !global;
-    @content; 
+    @content;
   }
 
-  .light-theme{
+  .light-theme {
     $mat-primary: map-get($codeswifterstarter-light-theme, primary);
     $mat-accent: map-get($codeswifterstarter-light-theme, accent);
     $mat-warn: map-get($codeswifterstarter-light-theme, warn);
     $background: map-get($codeswifterstarter-light-theme, background) !global;
     $foreground: map-get($codeswifterstarter-light-theme, foreground) !global;
-    @content; 
+    @content;
   }
 }

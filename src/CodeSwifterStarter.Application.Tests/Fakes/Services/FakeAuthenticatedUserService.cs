@@ -12,7 +12,7 @@ namespace CodeSwifterStarter.Application.Tests.Fakes.Services
         public string Name { get; }
         public string Email { get; }
         public bool EmailVerified { get; }
-        public List<string> Scopes { get; }
+        public List<string> Permissions { get; }
         public string Nickname { get; }
         public string Picture { get; }
         public DateTime? LastLogin { get; }
@@ -26,7 +26,7 @@ namespace CodeSwifterStarter.Application.Tests.Fakes.Services
             Name = serverConfiguration.InitialDeveloper.Name;
             Email = serverConfiguration.InitialDeveloper.Email;
             EmailVerified = true;
-            Scopes = new List<string>
+            Permissions = new List<string>
             {
                 
             };
@@ -40,7 +40,7 @@ namespace CodeSwifterStarter.Application.Tests.Fakes.Services
             return ObfuscatedUser.ToUserInfo(new ObfuscatedUser(Id, Name));
         }
 
-        public bool HasScope(string permission)
+        public bool HasPermission(string permission)
         {
             return true;
         }

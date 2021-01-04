@@ -52,9 +52,6 @@ export class AuthService {
   // Create a local property for login status
   loggedIn: boolean = null;
 
-  private _scopesSubject = new BehaviorSubject<Array<string>>([]);
-  scopes$ = this._scopesSubject.asObservable();
-
   constructor(public router: Router, private readonly userInfoService: UserInfoService) {
     // On initial load, check authentication state with authorization server
     // Set up local auth streams if user is already authenticated
@@ -74,13 +71,13 @@ export class AuthService {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getUser(options))),
       tap(user => {
-        this.userInfoService.getScopes()
+        this.userInfoService.GetPermissions()
         .pipe(
           take(1),
           takeUntil(this._destroy)
           )
         .subscribe(res => {
-          this._scopesSubject.next(res);
+          user.permissions = res;
           this._userProfileSubject.next(user);
         })
       })
@@ -164,6 +161,10 @@ export class AuthService {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getTokenSilently(options)))
     );
+  }
+
+  getUserProfile(): any {
+    return this._userProfileSubject.value;
   }
 
   /* 

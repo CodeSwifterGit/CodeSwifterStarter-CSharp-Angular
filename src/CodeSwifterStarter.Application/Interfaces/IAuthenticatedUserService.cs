@@ -9,7 +9,7 @@ namespace CodeSwifterStarter.Application.Interfaces
         string Name { get; }
         string Email { get; }
         bool EmailVerified { get; }
-        List<string> Scopes { get; }
+        List<string> Permissions { get; }
         string Nickname { get; }
         string Picture { get; }
         DateTime? LastLogin { get; }
@@ -18,6 +18,6 @@ namespace CodeSwifterStarter.Application.Interfaces
         bool IsAuthenticated { get; }
 
         string BundledUserInfo();
-        bool HasScope(string permission);
+        bool HasPermission(string permission);
     }
 }

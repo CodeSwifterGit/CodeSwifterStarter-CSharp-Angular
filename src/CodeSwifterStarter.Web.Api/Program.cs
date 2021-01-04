@@ -37,8 +37,15 @@ namespace CodeSwifterStarter.Web.Api
                  
                  After that run the following command from the command prompt:
                  
-                 dotnet dev-certs https -t
+                 dotnet dev-certs https --trust
 
+                 Check if certificate is installed using:
+                 dotnet dev-certs https --trust
+
+                If you get "No valid certificate found" uninstall, and install dotnet-dev-certs tool and go through above steps again:
+                dotnet tool uninstall --global dotnet-dev-certs
+                dotnet tool install --global dotnet-dev-certs
+                
                 */
             }
             finally

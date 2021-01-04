@@ -18,12 +18,12 @@ namespace CodeSwifterStarter.Web.Api.Controllers.Auth
         [Authorize()]
         [HttpGet("[action]")]
         [ProducesResponseType(typeof(List<string>), (int) HttpStatusCode.OK)]
-        public ActionResult<List<string>> GetScopes()
+        public ActionResult<List<string>> GetPermissions()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(_authenticatedUserService.Scopes);
+            return Ok(_authenticatedUserService.Permissions);
         }
     }
 }

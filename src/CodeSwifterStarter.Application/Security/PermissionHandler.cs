@@ -4,21 +4,21 @@ using CodeSwifterStarter.Application.Interfaces;
 
 namespace CodeSwifterStarter.Application.Security
 {
-    public class HasScopeHandler : AuthorizationHandler<HasScopeRequirement>
+    public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
         private readonly IAuthenticatedUserService _authenticatedUserService;
 
-        public HasScopeHandler(IAuthenticatedUserService authenticatedUserService)
+        public PermissionHandler(IAuthenticatedUserService authenticatedUserService)
         {
             _authenticatedUserService = authenticatedUserService;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-            HasScopeRequirement requirement)
+            PermissionRequirement requirement)
         {
             if (context != null && requirement != null)
             {
-                if (_authenticatedUserService.HasScope(requirement.Scope))
+                if (_authenticatedUserService.HasPermission(requirement.Permission))
                     context?.Succeed(requirement);
             }
 

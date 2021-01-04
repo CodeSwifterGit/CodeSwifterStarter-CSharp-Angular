@@ -19,7 +19,7 @@ namespace CodeSwifterStarter.Web.Api.Services
         public string Name { get; }
         public string Email { get; }
         public bool EmailVerified { get; }
-        public List<string> Scopes { get; }
+        public List<string> Permissions { get; }
         public string Nickname { get; }
         public string Picture { get; }
         public DateTime? LastLogin { get; }
@@ -82,13 +82,13 @@ namespace CodeSwifterStarter.Web.Api.Services
 
                 CreatedAt = createdAt.ToLocalTime();
 
-                Scopes = httpContextAccessor.HttpContext.User.Claims
+                Permissions = httpContextAccessor.HttpContext.User.Claims
                     .FirstOrDefault(x => x.Type == AuthenticatedUserConstants.ClaimTypePermissions)?.Value.Split(' ')
                     .ToList();
             }
             else
             {
-                Scopes = new List<string>();
+                Permissions = new List<string>();
             }
         }
 
@@ -99,9 +99,9 @@ namespace CodeSwifterStarter.Web.Api.Services
             return ObfuscatedUser.ToUserInfo(new ObfuscatedUser(Id, Name));
         }
 
-        public bool HasScope(string permission)
+        public bool HasPermission(string permission)
         {
-            return Scopes.Contains(permission);
+            return Permissions.Contains(permission);
         }
     }
 }

@@ -14,12 +14,12 @@ export class UserInfoService {
 
   }
 
-  getScopes(observe?: 'body', reportProgress?: boolean): Observable<Array<string>>;
-  getScopes(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<string>>>;
-  getScopes(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<string>>>;
-  getScopes(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  GetPermissions(observe?: 'body', reportProgress?: boolean): Observable<Array<string>>;
+  GetPermissions(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<string>>>;
+  GetPermissions(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<string>>>;
+  GetPermissions(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
-    let apiUrlBuilder = new ApiUrlBuilder('UserInfo/GetScopes', {});
+    let apiUrlBuilder = new ApiUrlBuilder('UserInfo/GetPermissions', {});
 
     return this.apiClient.get<Array<string>>(apiUrlBuilder.build(apiUrlBuilder.baseAuthUrl), { timeout: 120000 }, observe, reportProgress);
   }
