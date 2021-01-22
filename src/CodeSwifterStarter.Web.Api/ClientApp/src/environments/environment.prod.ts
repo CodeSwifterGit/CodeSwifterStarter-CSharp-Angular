@@ -6,6 +6,10 @@ export const environment = {
   // ReSharper disable once TsResolvedFromInaccessibleModule
   authConfig: config.authConfig.prod,
   /**
+   * The path where user should be redirected after the successful login
+   */
+  authorizePath: '/authorize',
+  /**
    * The number of milliseconds to wait before the loading indicator is shown.
    */
   deferLoadingIndicator: 250,

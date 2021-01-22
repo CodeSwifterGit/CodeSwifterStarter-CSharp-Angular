@@ -13,6 +13,8 @@ import { UserInfoService } from 'app/services/auth/user-info.service';
 @Injectable()
 export class AuthService {
   private _destroy = new Subject<boolean>();
+  private postAuthorizeUrl = `${window.location.protocol}//${window.location.hostname}`+ (window.location.port === '80' ? '' : `:${window.location.port}`) + `${environment.authorizePath}`;
+    
 
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
@@ -21,7 +23,7 @@ export class AuthService {
         domain: environment.authConfig.domain,
         client_id: environment.authConfig.clientId,
         audience: environment.authConfig.audience,
-        redirect_uri: `${window.location.origin}`
+        redirect_uri: this.postAuthorizeUrl
       }))
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every team receives the same shared value
@@ -110,7 +112,7 @@ export class AuthService {
       // Call method to log in
       client.loginWithRedirect(Object.assign({},
         {
-          redirect_uri: `${window.location.origin}`,
+          redirect_uri: this.postAuthorizeUrl,
           audience: environment.authConfig.audience,
           appState: { target: redirectPath }
         }));
@@ -166,23 +168,4 @@ export class AuthService {
   getUserProfile(): any {
     return this._userProfileSubject.value;
   }
-
-  /* 
-    hasScope(scope: string): boolean {
-      if (!this.userSession.value)
-        return false;
-  
-      return (
-        this.userSession.value.scopes.includes(`ClientApp|${scope}`) ||
-        this.userSession.value.scopes.includes(`${this.userSession.value.teamId}|${scope}`
-        )
-      );
-    }
-  
-    hasScopes(scopes: Array<string>): boolean {
-      return
-      scopes.every(scope => this.userSession.value.scopes.includes(`ClientApp|${scope}`)) ||
-        scopes.every(scope => this.userSession.value.scopes.includes(`${this.userSession.value.teamId}|${scope}`));
-    } */
-
 }

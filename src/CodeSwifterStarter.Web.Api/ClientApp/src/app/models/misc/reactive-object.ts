@@ -12,8 +12,8 @@ export class ReactiveObject<T> {
     }
 
     constructor(value: T, private readonly componentCacheService: ComponentCacheService, private readonly cacheIdentifier: string) {
-        const cachedValue = this.componentCacheService.get(cacheIdentifier);
-        this.subject = new BehaviorSubject<T>(!!cachedValue ? cachedValue : value);
+        const cachedItem = this.componentCacheService.get(cacheIdentifier);
+        this.subject = new BehaviorSubject<T>(cachedItem.found ? cachedItem.value : value);
         this.stream$ = this.subject.asObservable();
     }
 }
