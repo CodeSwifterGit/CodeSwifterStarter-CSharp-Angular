@@ -36,5 +36,9 @@ namespace CodeSwifterStarter.Domain
         void SetAutoDetectChanges(bool enabled);
 
         #endregion
+		
+		#region Upgrade Database
+        void UpgradeDatabase();
+        #endregion		
     }
 }

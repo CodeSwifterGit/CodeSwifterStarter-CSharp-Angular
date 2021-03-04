@@ -26,7 +26,6 @@ namespace CodeSwifterStarter.Persistence
         public void UpgradeDatabase()
         {
             Database.Migrate();
-            Database.EnsureCreated();
         }
 
         public void InitialiseDesignTime()

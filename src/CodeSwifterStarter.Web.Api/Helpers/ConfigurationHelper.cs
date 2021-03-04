@@ -1,6 +1,6 @@
-using System;
 using System.IO;
 using System.Reflection;
+using CodeSwifterStarter.Common.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Hosting;
@@ -11,24 +11,36 @@ namespace CodeSwifterStarter.Web.Api.Helpers
     {
         public static T GetConfigurationFromJson(IWebHostEnvironment environment)
         {
-            var fileName = "appsettings.json";
+            var baseFileName = "appsettings.json";
+            var environmentRelatedFileName = "";
 
             if (environment.IsProduction())
-                fileName = "appsettings.Production.json";
-
-            if (environment.IsStaging())
-                fileName = "appsettings.UAT.json";
-
-            if (environment.IsDevelopment())
-                fileName = "appsettings.Development.json";
+            {
+                environmentRelatedFileName = "appsettings.Production.json";
+            } 
+            else if (environment.IsStaging())
+            {
+                environmentRelatedFileName = "appsettings.UAT.json";
+            }
+            else
+            {
+                environmentRelatedFileName = "appsettings.Development.json";
+            }
 
             var codeBase = Assembly.GetExecutingAssembly().Location;
-            var uri = new UriBuilder(codeBase);
-            var path = Uri.UnescapeDataString(uri.Path);
+            var path = codeBase.Replace('/', Path.DirectorySeparatorChar);
 
-            var file = Path.Combine(Path.GetDirectoryName(path), fileName);
+            var baseFile = Path.Combine(Path.GetDirectoryName(path) ?? "", baseFileName);
+            var environmentRelatedFile = Path.Combine(Path.GetDirectoryName(path) ?? "", environmentRelatedFileName);
 
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+            var json = File.ReadAllText(baseFile);
+
+            if (File.Exists(environmentRelatedFile))
+            {
+                json = JsonHelper.MergeJson(json, File.ReadAllText(environmentRelatedFileName));
+            }
+
+            return JsonConvert.DeserializeObject<T>(json);
         }
     }
 }

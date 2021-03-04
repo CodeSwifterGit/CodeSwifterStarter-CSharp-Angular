@@ -26,8 +26,8 @@ export class UserSession {
   year?: number;
   branchId: string;
 
-  isAuthenticated() {
-    return !!name;
+  isAuthenticated(): boolean {
+    return !!this.name;
   }
 }
 

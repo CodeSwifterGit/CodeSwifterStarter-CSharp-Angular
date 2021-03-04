@@ -8,13 +8,12 @@ namespace CodeSwifterStarter.Common.Extensions
         public static IMappingExpression<TSource, TDestination> CompensateWithDestinationValues<TSource, TDestination>
             (this IMappingExpression<TSource, TDestination> expression)
         {
-            var flags = BindingFlags.Public | BindingFlags.Instance;
             var sourceType = typeof(TSource);
-            var destinationProperties = typeof(TDestination).GetProperties(flags);
+            var destinationProperties = typeof(TDestination).GetProperties();
 
             foreach (var property in destinationProperties)
             {
-                if (sourceType.GetProperty(property.Name, flags) == null)
+                if (sourceType.GetProperty(property.Name) == null)
                 {
                     expression.ForMember(property.Name, opt => opt.UseDestinationValue());
                 }
@@ -25,13 +24,12 @@ namespace CodeSwifterStarter.Common.Extensions
         public static IMappingExpression<TSource, TDestination> IgnoreMissingDestinationMembers<TSource, TDestination>
             (this IMappingExpression<TSource, TDestination> expression)
         {
-            var flags = BindingFlags.Public | BindingFlags.Instance;
             var destinationType = typeof(TDestination);
-            var sourceProperties = typeof(TSource).GetProperties(flags);
+            var sourceProperties = typeof(TSource).GetProperties();
 
             foreach (var property in sourceProperties)
             {
-                if (destinationType.GetProperty(property.Name, flags) == null)
+                if (destinationType.GetProperty(property.Name) == null)
                 {
                     expression.ForSourceMember(property.Name, opt => opt.DoNotValidate());
                 }

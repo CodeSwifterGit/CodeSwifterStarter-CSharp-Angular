@@ -76,8 +76,13 @@ namespace CodeSwifterStarter.Web.Api
 
             using (var scope = host.Services.CreateScope())
             {
-                var initializer = scope.ServiceProvider.GetService<CodeSwifterStarterSeeder>();
-                initializer.Seed(SeedType.WebApp);
+                var context = scope.ServiceProvider.GetService<ICodeSwifterDbContext>();
+                // ReSharper disable once PossibleNullReferenceException
+                context.UpgradeDatabase();
+
+                var seeder = scope.ServiceProvider.GetService<ICodeSwifterDbSeeder>();
+                // ReSharper disable once PossibleNullReferenceException
+                seeder.Seed(SeedType.WebApp);
             }
 
             return host;
